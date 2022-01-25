@@ -1,46 +1,54 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-    margin-top: 2rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pokedex-grid {
     display: flex;
+    align-items: center;
+    margin: auto;
+  }
 
-    .pokedex-grid{
-        display: flex;
-        align-items: center;
-        margin: auto;
-        overflow-x: scroll;
+  .pagination {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        
-
-        button{
-            background: transparent;
-            border: 0;
-            margin: 0 5rem;
-        }
+    button {
+      background: #7e7394;
+      border: 2px solid #100b16;
+      border-radius: 50%;
+      color: #fff;
+      height: 30px;
+      width: 30px;
+      margin: 0 0.4rem;
     }
 
-    .poke-pages{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .pokemon-row{
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin: auto;
-            width: 1200px;
-        }
-
-        .number-pages{
-            padding: .3rem 1rem;
-            width: 120px;
-            background: #535662;
-            border: 2px solid #100B16;
-            border-radius: 1rem;
-            color: #fff;
-            text-align: center;
-        }
+    .pagination__item--active {
+      background: #535662;
+      height: 35px;
+      width: 35px;
     }
 
-`
+    .next {
+      background: transparent;
+      border: 0;
+      position: relative;
+      bottom: 13rem;
+      left: -39rem;
+    }
+
+    .back {
+      background: transparent;
+      border: 0;
+      position: relative;
+      bottom: 13rem;
+      left: 39rem;
+    }
+  }
+`;
