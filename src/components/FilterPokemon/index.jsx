@@ -14,28 +14,23 @@ export function FilterPokemon() {
     setTypes(data.results);
   }
 
-  async function fetchTypesFilter() {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/type/${handleTypes}`
-    );
-    const data = await response.json();
-    const pokeList = data.pokemon;
-    pokeList.map(async (poke) => {
-      const pokeDataType = await fetch(`${poke.pokemon.url}`);
-      const dataPokeDataType = await pokeDataType.json();
-      setTypeResults(dataPokeDataType);
-    });
-  }
-
   useEffect(() => {
     fetchTypes();
   }, []);
 
   useEffect(() => {
-    fetchTypesFilter();
+    setTypeResults([]);
+    fetch(`https://pokeapi.co/api/v2/type/${handleTypes}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const results = data.pokemon;
+        const promisesArray = results.map(async (poke) => {
+          return fetch(`${poke.pokemon.url}`).then((response) => response.json());
+        });
+        return Promise.all(promisesArray);
+      })
+      .then(setTypeResults);
   }, [handleTypes]);
-
-  console.log(typeResults); //Os Pokemons filtrados por tipo estão no console, mas um de cada vez
 
   return (
     <Container>
@@ -49,6 +44,7 @@ export function FilterPokemon() {
           name="categoria"
           value={handleTypes}
         >
+          <option value="">Filtrar</option>
           {types.map((type) => {
             return (
               <option value={type.name} key={type.name}>
@@ -59,7 +55,11 @@ export function FilterPokemon() {
         </select>
       </div>
       <div className="filtered">
-        {typeResults && <PokemonFiltered typeResults={typeResults} />}
+        {typeResults.map((data) => {
+          return(
+            <PokemonFiltered pokemon={data} key={data.id}/>
+          );
+        })}
       </div>
     </Container>
   );

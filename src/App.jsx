@@ -6,13 +6,11 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 const api = "https://pokeapi.co/api/v2/";
-const apiTypes = "https://pokeapi.co/api/v2/type/";
 const LIMIT = 5;
 
 export function App() {
   const [info, setInfo] = useState([]);
   const [offset, setOffset] = useState(0);
-
 
   useEffect(() => {
     setInfo([]);
@@ -28,14 +26,6 @@ export function App() {
       })
       .then(setInfo);
   }, [offset]);
-
-  // useEffect(() => {
-  //   fetch(apiTypes)
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       setTypes(json.results);
-  //     });
-  // }, []);
 
   return (
     <>

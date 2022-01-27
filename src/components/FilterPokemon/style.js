@@ -19,18 +19,7 @@ export const Container = styled.div`
     }
 
     .filtered{
-        padding: 1rem 3rem;
+        display: flex;
 
-        .not-found{
-            text-align: center;
-            font-weight: 500;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .pokemon-row{
-            display: flex;
-            justify-content: center;
-        }
     }
 `
