@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     background: #D4C3A3;
     max-width: 1000px;
-    height: 380px;
+    height: 800px;
     margin: auto;
     border-radius: 0 0 1.6rem 1.6rem;
 
@@ -20,6 +20,8 @@ export const Container = styled.div`
 
     .filtered{
         display: flex;
-
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
     }
 `

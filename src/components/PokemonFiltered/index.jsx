@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container } from "../Pokemon/style";
 
 export function PokemonFiltered(data) {
   

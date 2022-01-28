@@ -1,12 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 import { Container } from "./style";
+import Pagination from "../../Pagination";
 
 import { PokemonFiltered } from "../PokemonFiltered";
 
+const PageSize = 6;
+
 export function FilterPokemon() {
+  const [types, setTypes] = useState([]);
   const [handleTypes, setHandleTypes] = useState("");
   const [typeResults, setTypeResults] = useState([]);
-  const [types, setTypes] = useState([]);
+  const [typePagination, setTypePagination] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    let results = typeResults.slice(firstPageIndex, lastPageIndex);
+    setTypePagination(results)
+  }, [currentPage, typeResults]);
 
   async function fetchTypes() {
     const response = await fetch("https://pokeapi.co/api/v2/type/");
@@ -25,13 +37,15 @@ export function FilterPokemon() {
       .then((data) => {
         const results = data.pokemon;
         const promisesArray = results.map(async (poke) => {
-          return fetch(`${poke.pokemon.url}`).then((response) => response.json());
+          return fetch(`${poke.pokemon.url}`).then((response) =>
+            response.json()
+          );
         });
         return Promise.all(promisesArray);
       })
       .then(setTypeResults);
   }, [handleTypes]);
-
+  
   return (
     <Container>
       <div className="filter">
@@ -55,12 +69,17 @@ export function FilterPokemon() {
         </select>
       </div>
       <div className="filtered">
-        {typeResults.map((data) => {
-          return(
-            <PokemonFiltered pokemon={data} key={data.id}/>
-          );
+        {typePagination.map((data) => {
+          return <PokemonFiltered pokemon={data} key={data.id} />;
         })}
       </div>
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={typeResults.length}
+        pageSize={PageSize}
+        onPageChange={page => setCurrentPage(page)}
+      />
     </Container>
   );
 }
