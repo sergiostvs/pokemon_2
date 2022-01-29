@@ -6,7 +6,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 const api = "https://pokeapi.co/api/v2/";
-const LIMIT = 5;
+const LIMIT = 4;
 
 export function App() {
   const [info, setInfo] = useState([]);

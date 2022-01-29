@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 2rem;
+  margin: auto 2rem;
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,9 @@ export const Container = styled.div`
 
   .pokedex-grid {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     margin: auto;
   }
 
@@ -40,7 +42,11 @@ export const Container = styled.div`
       border: 0;
       position: relative;
       bottom: 13rem;
-      left: -39rem;
+      left: -30rem;
+
+      @media(max-width: 1348px){
+        display: none;
+      }
     }
 
     .back {
@@ -48,7 +54,11 @@ export const Container = styled.div`
       border: 0;
       position: relative;
       bottom: 13rem;
-      left: 39rem;
+      left: 30rem;
+
+      @media(max-width: 1348px){
+        display: none;
+      }
     }
   }
 `;

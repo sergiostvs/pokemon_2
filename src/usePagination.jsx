@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 
 export const DOTS = '...';
 
@@ -17,7 +17,7 @@ export const usePagination = ({
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     
-    const totalPageNumbers = siblingCount + 5;
+    const totalPageNumbers = siblingCount + 1;
 
     
     if (totalPageNumbers >= totalPageCount) {
