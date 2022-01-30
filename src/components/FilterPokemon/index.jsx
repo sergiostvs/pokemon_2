@@ -1,12 +1,14 @@
-import { useEffect, useState, } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "./style";
 import Pagination from "../../Pagination";
 
 import { PokemonFiltered } from "../PokemonFiltered";
+import { Pokemon } from "../Pokemon";
 
 const PageSize = 6;
 
-export function FilterPokemon() {
+export function FilterPokemon(props) {
+  const { pokemons } = props;
   const [types, setTypes] = useState([]);
   const [handleTypes, setHandleTypes] = useState("");
   const [typeResults, setTypeResults] = useState([]);
@@ -17,7 +19,7 @@ export function FilterPokemon() {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     let results = typeResults.slice(firstPageIndex, lastPageIndex);
-    setTypePagination(results)
+    setTypePagination(results);
   }, [currentPage, typeResults]);
 
   async function fetchTypes() {
@@ -45,7 +47,7 @@ export function FilterPokemon() {
       })
       .then(setTypeResults);
   }, [handleTypes]);
-  
+
   return (
     <Container>
       <div className="filter">
@@ -68,17 +70,26 @@ export function FilterPokemon() {
           })}
         </select>
       </div>
-      <div className="filtered">
-        {typePagination.map((data) => {
-          return <PokemonFiltered pokemon={data} key={data.id} />;
-        })}
+      <div>
+        <div className="search-results">
+          <div>
+            {pokemons.map((pokemon) => {
+              return <Pokemon pokemon={pokemon} key={pokemon.name} />;
+            })}
+          </div>
+        </div>
+        <div className="filtered">
+          {typePagination.map((data) => {
+            return <PokemonFiltered pokemon={data} key={data.id} />;
+          })}
+        </div>
       </div>
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
         totalCount={typeResults.length}
         pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
+        onPageChange={(page) => setCurrentPage(page)}
       />
     </Container>
   );

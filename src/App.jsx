@@ -11,6 +11,28 @@ const LIMIT = 4;
 export function App() {
   const [info, setInfo] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [pokemonSearch, setPokemonSearch] = useState([]);
+
+  const searchPokemon = async (pokemonSearch) => {
+    try {
+      let url = `https://pokeapi.co/api/v2/pokemon/${pokemonSearch}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (err) {}
+  };
+
+  const onSearch = async (pokemon) => {
+    if (!pokemon) {
+      return;
+    }
+    const result = await searchPokemon(pokemon);
+    if (!result) {
+      return;
+    } else {
+      setPokemonSearch([result]);
+    }
+  };
 
   useEffect(() => {
     setInfo([]);
@@ -29,8 +51,8 @@ export function App() {
 
   return (
     <>
-      <Header />
-      <FilterPokemon />
+      <Header onSearch={onSearch}/>
+      <FilterPokemon pokemons={pokemonSearch}/>
       <Pokedex
         pokemon={info}
         limit={LIMIT}

@@ -19,6 +19,10 @@ export const Container = styled.div`
         }
     }
 
+    .search-results{
+        border-bottom: 1px solid #707070;
+    }
+
     .filtered{
         display: flex;
         flex-wrap: wrap;

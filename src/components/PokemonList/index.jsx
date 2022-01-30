@@ -1,8 +1,8 @@
 import { Container } from "./style";
 import { Pokemon } from "../Pokemon";
 
-import back from "../../assets/back.svg"
-import next from "../../assets/next.svg"
+import back from "../../assets/back.svg";
+import next from "../../assets/next.svg";
 
 const MAX_ITEMS = 5;
 const MAX_LEFT = (MAX_ITEMS - 1) / 2;
@@ -24,7 +24,6 @@ const Pokedex = ({ pokemon, limit, total, offset, setOffset }) => {
           return <Pokemon pokemon={pokemon} key={pokemon.name} />;
         })}
       </div>
-
       <ul className="pagination">
         <li>
           <button
@@ -42,7 +41,9 @@ const Pokedex = ({ pokemon, limit, total, offset, setOffset }) => {
               <button
                 onClick={() => onPageChange(page)}
                 className={page === current ? "pagination__item--active" : null}
-              >{page}</button>
+              >
+                {page}
+              </button>
             </li>
           ))}
         <li>
