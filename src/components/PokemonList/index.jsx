@@ -3,6 +3,7 @@ import { Pokemon } from "../Pokemon";
 
 import back from "../../assets/back.svg";
 import next from "../../assets/next.svg";
+import loading from "../../assets/loading.png";
 
 const MAX_ITEMS = 5;
 const MAX_LEFT = (MAX_ITEMS - 1) / 2;
@@ -19,10 +20,19 @@ const Pokedex = ({ pokemon, limit, total, offset, setOffset }) => {
 
   return (
     <Container>
-      <div className="pokedex-grid">
-        {pokemon.map((pokemon) => {
-          return <Pokemon pokemon={pokemon} key={pokemon.name} />;
-        })}
+      <div className="box-list">
+        {pokemon.length > 0 ? (
+          <div className="pokedex-grid">
+            {pokemon.map((pokemon) => {
+              return <Pokemon pokemon={pokemon} key={pokemon.name} />;
+            })}
+          </div>
+        ) : (
+          <div className="loading">
+            <p className="loading-text">Carregando...</p>
+            <img src={loading} alt="Carregando" />
+          </div>
+        )}
       </div>
       <ul className="pagination">
         <li>

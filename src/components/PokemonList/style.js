@@ -7,13 +7,30 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  .pokedex-grid {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+  .box-list{
+    min-height: 320px;
+
+    .loading{
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+
+      .loading-text{
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+  
+    .pokedex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+    }
   }
+
 
   .pagination {
     list-style: none;

@@ -50,6 +50,18 @@ export function FilterPokemon(props) {
 
   return (
     <Container>
+      <div className="search-results">
+        <div>
+          {pokemons.map((pokemon) => {
+            return (
+              <>
+                <p className="resultado">Resultado da busca:</p>
+                <Pokemon pokemon={pokemon} key={pokemon.name} />
+              </>
+            );
+          })}
+        </div>
+      </div>
       <div className="filter">
         <select
           className="filter-box"
@@ -71,13 +83,6 @@ export function FilterPokemon(props) {
         </select>
       </div>
       <div>
-        <div className="search-results">
-          <div>
-            {pokemons.map((pokemon) => {
-              return <Pokemon pokemon={pokemon} key={pokemon.name} />;
-            })}
-          </div>
-        </div>
         <div className="filtered">
           {typePagination.map((data) => {
             return <PokemonFiltered pokemon={data} key={data.id} />;

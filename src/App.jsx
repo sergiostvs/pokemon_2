@@ -12,6 +12,7 @@ export function App() {
   const [info, setInfo] = useState([]);
   const [offset, setOffset] = useState(0);
   const [pokemonSearch, setPokemonSearch] = useState([]);
+  const [total, setTotal] = useState();
 
   const searchPokemon = async (pokemonSearch) => {
     try {
@@ -40,6 +41,7 @@ export function App() {
     fetch(`${api}pokemon?limit=${LIMIT}&offset=${offset}`)
       .then((response) => response.json())
       .then((data) => {
+        setTotal(data.count);
         let results = data.results;
         let promisesArray = results.map(async (result) => {
           return fetch(result.url).then((response) => response.json());
@@ -56,7 +58,7 @@ export function App() {
       <Pokedex
         pokemon={info}
         limit={LIMIT}
-        total={100}
+        total={total}
         offset={offset}
         setOffset={setOffset}
       />

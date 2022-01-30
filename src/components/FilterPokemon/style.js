@@ -4,13 +4,13 @@ export const Container = styled.div`
     background: #D4C3A3;
     max-width: 1000px;  
     margin: auto;
+    margin-bottom: 2rem;
     padding-bottom: 2rem;
     min-height: 300px;
     border-radius: 0 0 1.6rem 1.6rem;
 
     .filter{
         padding: 1rem;
-        border-bottom: 1px solid #707070;
 
         .filter-box{
             width: 8rem;
@@ -21,6 +21,13 @@ export const Container = styled.div`
 
     .search-results{
         border-bottom: 1px solid #707070;
+        margin-bottom: 1rem;
+
+        .resultado{
+            padding: 1rem;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
     }
 
     .filtered{
