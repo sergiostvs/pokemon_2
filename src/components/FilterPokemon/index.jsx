@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "./style";
 import Pagination from "../../Pagination";
 
+import loading from "../../assets/loading.png";
 import { PokemonFiltered } from "../PokemonFiltered";
 import { Pokemon } from "../Pokemon";
 
@@ -10,7 +11,7 @@ const PageSize = 6;
 export function FilterPokemon(props) {
   const { pokemons } = props;
   const [types, setTypes] = useState([]);
-  const [handleTypes, setHandleTypes] = useState("");
+  const [handleTypes, setHandleTypes] = useState("normal");
   const [typeResults, setTypeResults] = useState([]);
   const [typePagination, setTypePagination] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -72,7 +73,6 @@ export function FilterPokemon(props) {
           name="categoria"
           value={handleTypes}
         >
-          <option value="">Filtrar</option>
           {types.map((type) => {
             return (
               <option value={type.name} key={type.name}>
@@ -83,11 +83,18 @@ export function FilterPokemon(props) {
         </select>
       </div>
       <div>
+        {typePagination.length > 0 ? (
         <div className="filtered">
           {typePagination.map((data) => {
             return <PokemonFiltered pokemon={data} key={data.id} />;
           })}
         </div>
+        ) : (
+          <div className="loading">
+            <p className="loading-text">Carregando...</p>
+            <img src={loading} alt="Carregando" />
+          </div>
+        )}
       </div>
       <Pagination
         className="pagination-bar"

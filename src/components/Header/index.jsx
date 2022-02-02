@@ -14,14 +14,16 @@ export function Header(props) {
           src={pokemon}
           alt="Pokemon"
         />
-        <input
-          className="searchbar"
-          onChange={(e) => {
-            onSearch(e.target.value.toLowerCase());
-          }}
-          placeholder="Buscar Pokémon"
-        />
-        <button className="login-btn">Login</button>
+        <div className="control">
+          <input
+            className="searchbar"
+            onChange={(e) => {
+              onSearch(e.target.value.toLowerCase());
+            }}
+            placeholder="Buscar Pokémon"
+          />
+          <button className="login-btn">Login</button>
+        </div>
         <img
           className="logo-competi"
           draggable="false"

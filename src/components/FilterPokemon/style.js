@@ -19,6 +19,19 @@ export const Container = styled.div`
         }
     }
 
+    .loading{
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .loading-text{
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+
     .search-results{
         border-bottom: 1px solid #707070;
         margin-bottom: 1rem;
