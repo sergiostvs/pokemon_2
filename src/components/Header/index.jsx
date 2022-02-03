@@ -20,7 +20,7 @@ export function Header(props) {
             onChange={(e) => {
               onSearch(e.target.value.toLowerCase());
             }}
-            placeholder="teste"
+            placeholder="Buscar Pokémon"
           />
           <button className="login-btn">Login</button>
         </div>
