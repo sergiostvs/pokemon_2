@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { FilterPokemon } from "./components/FilterPokemon";
-import { GlobalStyle } from "./styles/global";
 import Pokedex from "./components/PokemonList";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -63,7 +62,6 @@ export function App() {
         setOffset={setOffset}
       />
       <Footer />
-      <GlobalStyle />
     </>
   );
 }

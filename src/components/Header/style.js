@@ -16,7 +16,7 @@ export const HeaderBox = styled.header`
     }
 
     @media(max-width: 425px){
-      padding-bottom: 6.9rem;
+      padding-bottom: 9rem;
     }
 
     .logo-poke {
@@ -59,6 +59,29 @@ export const HeaderBox = styled.header`
         @media (max-width: 425px) {
           position: absolute;
           top: 3rem;
+          left: .7rem;
+          width: 94%;
+        }
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+
+      .logout-btn {
+        font-size: 1rem;
+        color: #fff;
+        background: #7e7394;
+        border: 0.15rem solid #000;
+        border-radius: 0.6rem;
+        margin-left: .7rem;
+        padding: 0.3rem 2rem;
+        transition: filter 0.2s;
+
+        @media (max-width: 425px) {
+          position: absolute;
+          margin-left: 0;
+          top: 5.5rem;
           left: .7rem;
           width: 94%;
         }
