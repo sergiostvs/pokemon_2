@@ -5,7 +5,7 @@ import { AuthContext } from "../../Contexts/auth"
 import { Container } from "./style";
 
 const UserLogin = () => {
-  const { authenticated, login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');

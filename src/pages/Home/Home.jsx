@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { App } from '../../App';
 
 const PagesHome = () => {
