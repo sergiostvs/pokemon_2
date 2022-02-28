@@ -18,7 +18,7 @@ const UserLogin = () => {
   return (
     <Container>
       <div className="content">
-        <h1 className="user-login__title">Login</h1>
+        <h1 className="user-login__title">Login<br/><strong>Senha: 123</strong></h1>
         <form className="form" onSubmit={handleSubmit}>
           <div className="user-login__form-control">
             <label htmlFor="user">Usuário</label>

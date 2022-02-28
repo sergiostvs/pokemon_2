@@ -23,6 +23,11 @@ export const Container = styled.div`
       color: #524153;
       margin-bottom: 2rem;
       text-align: center;
+
+      strong{
+        font-size: 1rem;
+        font-weight: 400;
+      }
     }
 
     .user-login__form-control {
